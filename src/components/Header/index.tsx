@@ -30,7 +30,7 @@ export const Header = () => {
 
 	return (
 		<Box sx={{ flexGrow: 1 }} color='Background' dir={locale.dir}>
-			<AppBar position='static' color='primary'>
+			<AppBar position='fixed' color='primary'>
 				<Toolbar>
 					<IconButton style={{ borderRadius: 10 }} size='large' edge='start' color='inherit' aria-label='menu' sx={{ mr: 2 }} onClick={toggleDrawer}>
 						<MenuIcon />

@@ -1,6 +1,7 @@
 import { Dialog as MuiDialog } from '@mui/material';
 import { styled } from '@mui/system';
 import { DialogContent, DialogTitle } from '@mui/material';
+import { useLanguage } from '../../context/useLanguage';
 
 interface Props {
 	open: boolean;
@@ -8,7 +9,9 @@ interface Props {
 	title?: string;
 }
 
-export const Dialog: React.FC<Props> = ({ open, onClose, children, title }) => (
+export const Dialog: React.FC<Props> = ({ open, onClose, children, title }) => {
+	const { locale } = useLanguage()
+	return (
 	<StyledDialog
 		open={open}
 		onClose={onClose}
@@ -16,9 +19,9 @@ export const Dialog: React.FC<Props> = ({ open, onClose, children, title }) => (
 		maxWidth='sm'
 		transitionDuration={600}
 		BackdropProps={{ sx: { backdropFilter: 'blur(2px)', bgcolor: 'transparent' } }}>
-		<DialogTitle>{title}</DialogTitle>
-		<DialogContent>{children}</DialogContent>
+		<DialogTitle dir={locale.dir}>{title}</DialogTitle>
+		<DialogContent dir={locale.dir}>{children}</DialogContent>
 	</StyledDialog>
-);
+)}
 
 export const StyledDialog = styled(MuiDialog)({ flex: 1, alignItems: 'flex-start', alignContent: 'flex-start', alignSelf: 'flex-start' });
